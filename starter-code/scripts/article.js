@@ -3,7 +3,7 @@
 var articles = [];
 
 function Article (opts) {
-  // TODO: Use the JS object passed in to complete this constructor function:
+  // DONE: Use the JS object passed in to complete this constructor function:
   // Save ALL the properties of `opts` into `this`
   // lots of this.someProperty = opts.property
   this.title = opts.title;
@@ -17,11 +17,12 @@ function Article (opts) {
 
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
-  /* TODO: This cloned article is no longer a template,
+  /* CHANGED: This cloned article is no longer a template,
   as it now has real data attached to it! We need to account
   for that before this current article gets rendered to our
   DOM. */
   // one line of code to remove the class that hides the template so that the articles will actually show
+  $newArticle.removeClass('template');
 
   if (!this.publishedOn) $newArticle.addClass('draft');
   $newArticle.data('category', this.category);
@@ -36,8 +37,12 @@ Article.prototype.toHtml = function() {
     5. publication date. */
 
     // lots of $newArticle.find...  (look at jQuery $.find docs)
-
-    console.log($newArticle);
+  $newArticle.find('h1').html(this.title);
+  // $newArticle.find().
+  // $newArticle.find().
+  // $newArticle.find().
+  // $newArticle.find().
+  console.log($newArticle);
 
   // Display the date as a relative number of 'days ago'
   $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
