@@ -6,6 +6,13 @@ function Article (opts) {
   // TODO: Use the JS object passed in to complete this constructor function:
   // Save ALL the properties of `opts` into `this`
   // lots of this.someProperty = opts.property
+  this.title = opts.title;
+  this.category = opts.category;
+  this.author = opts.author;
+  this.authorUrl = opts.authorUrl;
+  this.publishedOn = opts.publishedOn;
+  this.body = opts.body;
+  console.log(this);
 }
 
 Article.prototype.toHtml = function() {
