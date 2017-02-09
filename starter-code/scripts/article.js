@@ -3,7 +3,7 @@
 var articles = [];
 
 function Article (opts) {
-  // DONE: Use the JS object passed in to complete this constructor function:
+  // CHANGED: Use the JS object passed in to complete this constructor function:
   // Save ALL the properties of `opts` into `this`
   // lots of this.someProperty = opts.property
   this.title = opts.title;
