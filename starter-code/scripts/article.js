@@ -12,7 +12,6 @@ function Article (opts) {
   this.authorUrl = opts.authorUrl;
   this.publishedOn = opts.publishedOn;
   this.body = opts.body;
-  console.log(this);
 }
 
 Article.prototype.toHtml = function() {
@@ -27,7 +26,7 @@ Article.prototype.toHtml = function() {
   if (!this.publishedOn) $newArticle.addClass('draft');
   $newArticle.data('category', this.category);
 
-  /* TODO: Now use jQuery to fill in the rest of the current
+  /* CHANGED: Now use jQuery to fill in the rest of the current
   template clone with properties from this particular Article instance.
   We need to fill in:
     1. author name,
@@ -38,11 +37,9 @@ Article.prototype.toHtml = function() {
 
     // lots of $newArticle.find...  (look at jQuery $.find docs)
   $newArticle.find('h1').html(this.title);
-  // $newArticle.find().
-  // $newArticle.find().
-  // $newArticle.find().
-  // $newArticle.find().
-  console.log($newArticle);
+  $newArticle.find('a').attr('href', this.authorUrl).html(this.author);
+  $newArticle.find('.article-body').html(this.body);
+  $newArticle.find('time').html(this.publishedOn);
 
   // Display the date as a relative number of 'days ago'
   $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
